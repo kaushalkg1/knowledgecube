@@ -1,0 +1,56 @@
+html( lang="en")
+  head
+    link(rel="stylesheet" href="/assets/css/styleAdmin.css")
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200")
+    title knowledgeCube - Admin
+  body
+    .login-signup-backgrop
+       
+      .login-signup-card
+        .blank 
+        .login-signup-card-outer
+         
+          .login-signup-inner
+            form(method="post" action="/admin/signup" name="signUpForm")
+      
+              .login-signup-left-signup
+                  h1(style="text-align:center") Admin Login
+                  .login-input-card-half
+                    .login-input-card
+                      .login-iconAdmin
+                        img(src="/assets/icons/person_add_FILL0_wght200_GRAD0_opsz40.svg")
+                      
+                      input(type="text" name="firstName" placeholder="First Name" class="input-textbox" required)
+                    .login-input-card 
+                      .login-iconAdmin
+                        img(src="/assets/icons/person_add_FILL0_wght200_GRAD0_opsz40.svg")
+                  
+                      input(type="text" name="lastName" placeholder="Last Name" class="input-textbox"  required)
+                  
+                   
+                  .login-input-card
+                    .login-iconAdmin
+                      img(src="/assets/icons/person_add_FILL0_wght200_GRAD0_opsz40.svg")
+                    input(type="text" name="userName" placeholder="UserName" class="input-textbox"  required)
+                
+                    
+                    
+                  .login-input-card
+                    .login-iconAdmin
+                      img(src="/assets/icons/empty_dashboard_FILL0_wght200_GRAD0_opsz40.svg")
+                    input(type="email" name="email" placeholder="E-mail" class="input-textbox"  required)
+                  
+                  .login-input-card
+                    .login-iconAdmin
+                      img(src="/assets/icons/swipe_down_FILL0_wght200_GRAD0_opsz40.svg")
+                    input(type="password" name="password" placeholder="password" class="input-textbox"  required)
+                  .login-input-card
+                    .login-iconAdmin
+                      img(src="/assets/icons/add_circle_FILL0_wght200_GRAD0_opsz40.svg")
+                    button(type="submit" id="signupBtn" class="login-signup-button") Create Account
+          div(style="text-align:center" )
+            img(src="/assets/img/knowledgecube.gif" style="width:55%; " )
+        .blank
+    script(src="/assets/js/main.signup.js")
