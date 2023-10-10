@@ -6,6 +6,8 @@
   "scripts": {
     "start": "di",
     "dev": "nodemon -r dotenv/config ./bin"
+  },"engines":{
+    "node": ">=12.8.0"
   },
   "author": "",
   "license": "ISC",
