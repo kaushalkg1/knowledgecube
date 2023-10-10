@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin",
+    "start": "di",
     "dev": "nodemon -r dotenv/config ./bin"
   },
   "author": "",
