@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectToDb = () =>
   mongoose.connect(
-    `mongodb+srv://${process.env.atlasUser}:${process.env.atlasPassword}@cluster0.bvezscc.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://kg12345:maqEGQvP1PLE2zeu@cluster0.bvezscc.mongodb.net/?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
