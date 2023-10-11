@@ -134,8 +134,71 @@ user = await User.findOneAndUpdate( { _id:id }, { isCreator:value } );
 
 }
 
+user = await User.findOne( { _id:id } );
+ const datafacebook = user.socialProfile.facebook;
+ const datatwitter = user.socialProfile.twitter;
+ const datalinkedIn = user.socialProfile.linkedIn;
+ const datagithub = user.socialProfile.github;
+ const datawebsite = user.socialProfile.website;
+ const datayoutube = user.socialProfile.youtube;
+ const datainstagram = user.socialProfile.instagram;
+
+const socialProfileData = {
+  facebook:datafacebook,
+              twitter: datatwitter,
+              linkedIn:datalinkedIn,
+               github: datagithub,
+              website:datawebsite ,
+              youtube:datayoutube ,
+              instagram:datainstagram
+}
+          
+ 
+
+if(field ==="facebook") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, facebook:value } } );
+
+}  
+
+if(field ==="twitter") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, twitter:value } } );
+
+}  
+
+if(field ==="linkedIn") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, linkedIn:value } } );
+
+}  
+
+if(field ==="github") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, github:value } } );
+
+}  
+
+if(field ==="website") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, website:value } } );
+
+}  
+
+if(field ==="youtube") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, youtube:value } } );
+
+}  
+
+if(field ==="instagram") { user = await User.findOne( { _id:id } );
+ 
+user = await User.findOneAndUpdate( { _id:id }, { socialProfile:{...socialProfileData, instagram:value } } );
+
+}  
+
  const userToken = await User.findOne( { _id:id } );
-       let  userData = {  id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,currentToken:userToken.currentToken};
+       let  userData = {  id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,socialProfile:user.socialProfile,currentToken:userToken.currentToken};
    
    
        if(field ==="firstName") {return Promise.resolve({ user:{...userData,firstName: value, fullName: value+ " " +user.lastName },currentToken:userToken.currentToken});}
@@ -145,6 +208,22 @@ user = await User.findOneAndUpdate( { _id:id }, { isCreator:value } );
        if(field ==="bio") {return Promise.resolve({ user:{...userData,bio: value},currentToken:userToken.currentToken});}
        if(field ==="phoneNumber") {return Promise.resolve({ user:{...userData,phoneNumber: value},currentToken:userToken.currentToken});}
        if(field ==="isCreator") {return Promise.resolve({ user:{...userData,isCreator: value},currentToken:userToken.currentToken});}
+        
+/*
+ facebook:"",
+              twitter:"",
+              linkedIn:"",
+               github:"",
+              website:"" ,
+              youtube:"" ,
+              instagram:"" ,*/
+              if(field ==="facebook") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, facebook:value } },currentToken:userToken.currentToken});}
+              if(field ==="twitter") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, twitter:value } },currentToken:userToken.currentToken});}
+              if(field ==="linkedIn") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, linkedIn:value } },currentToken:userToken.currentToken});}
+              if(field ==="github") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, github:value } },currentToken:userToken.currentToken});}
+              if(field ==="website") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, website:value } },currentToken:userToken.currentToken});}
+              if(field ==="youtube") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, youtube:value } },currentToken:userToken.currentToken});}
+              if(field ==="instagram") {return Promise.resolve({ user:{...userData,socialProfile:{...socialProfileData, instagram:value } },currentToken:userToken.currentToken});}
        
 
   } catch (error) {
@@ -183,6 +262,23 @@ export const loginUser = async ({ email, password }) => {
   }
 };
 
+
+
+
+export const validateUser = async (data) => {
+  try {   
+    const user = await User.findOne({
+      email:data.user.email,
+    });
+      const token =  user.currentToken;
+       return Promise.resolve({
+      user: { id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,currentToken:user.currentToken},
+      token,
+    });
+  } catch (error) {
+    return Promise.reject({ error });
+  }
+};
 
 
 
