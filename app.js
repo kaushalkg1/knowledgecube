@@ -17,7 +17,7 @@ app.use(express.static(join(__dirname, "public", "client")));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());   
 app.use(
-  "/admin",
+  "/admin", 
   session({
     name: "sessId",
     secret: process.env.sessionSecret,

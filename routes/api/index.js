@@ -35,7 +35,7 @@ router.post("/login", loginUser);
  
 router.post("/signup", signUpUser);
 router.post("/createCourse", createCourse);
-
+ 
 router.route("/updateUser")
 .post( updateUser);
 

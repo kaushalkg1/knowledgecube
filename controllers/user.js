@@ -3,16 +3,24 @@ import jwt from "jsonwebtoken";
 
 const sign = (obj) =>
   new Promise((resolve, reject) => {
-    jwt.sign(obj, process.env.jwtPrivateKey, (error, token) => {
+    jwt.sign(obj, "MegaMind", (error, token) => {
       if (error) return reject(error);
 
       return resolve(token);
     });
+    // jwt.sign(obj, process.env.jwtPrivateKey, (error, token) => {
+    //   if (error) return reject(error);
+  
+    //   return resolve(token);
+    // });
+  
+  
   });
+
 
 const verify = (token) =>
   new Promise((resolve, reject) => {
-    jwt.verify(token, process.env.jwtPrivateKey, (error) => {
+    jwt.verify(token, "MegaMind", (error) => {
       if (error) return reject();
       return resolve({ success: true });
     });
