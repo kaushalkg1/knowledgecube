@@ -7,8 +7,8 @@
 import { Schema, model } from "mongoose";
 //import { join } from "path";
 
-const profilePic = "http://www.ilogically.com/wp-content/uploads/2023/08/727399.png";
-const coverPic = "http://www.ilogically.com/wp-content/uploads/2023/08/coverPic.gif";
+const profilePic = "https://theknowledgecube.onrender.com/final/userImg.gif";
+const coverPic = "https://theknowledgecube.onrender.com/final/coverPic.gif";
 
 import bcrypt from "bcrypt"
 const userSchema = new Schema({
