@@ -254,7 +254,7 @@ export const loginUser = async ({ email, password }) => {
      await User.findOneAndUpdate( { _id:user._id }, { currentToken:token } ); 
   
     return Promise.resolve({
-      user: { id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,currentToken:token},
+      user: { id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,socialProfile:user.socialProfile,currentToken:token},
       token,
     });
   } catch (error) {
@@ -272,7 +272,7 @@ export const validateUser = async (data) => {
     });
       const token =  user.currentToken;
        return Promise.resolve({
-      user: { id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,currentToken:user.currentToken},
+      user: { id: user._id, fullName: user.fullName,isAdmin:user.isAdmin,profilePhoto:user.profilePhoto,coverPhoto:user.coverPhoto, firstName: user.firstName,lastName: user.lastName,email: user.email, lastLoggedIn: user.lastLoggedIn ,bio:user.bio,age:user.age,gender:user.gender,phoneNumber:user.phoneNumber,isCreator:user.isCreator,socialProfile:user.socialProfile,currentToken:user.currentToken},
       token,
     });
   } catch (error) {

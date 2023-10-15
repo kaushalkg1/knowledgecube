@@ -8,7 +8,7 @@ const connectToDb = () =>
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
-    }
-  );
+    } 
+  );  
 
 export default connectToDb;

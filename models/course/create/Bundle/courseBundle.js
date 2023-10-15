@@ -23,12 +23,12 @@ const courseBundleSchema = new Schema({
   filter: {
     type:String,
     default:"Trending",
-    /* Trending , Coming Soon , Top Rated , Sponcered ,   */
+    /* Trending , Coming Soon , Top Rated , Sponsored ,   */
   },
   language: {
-    type:String,
-    default:"English",
-    /* English ,Hindi, Hinglish ,   */
+    type:Array,
+    default:["English"],
+    /* English ,Hindi, Hinglish    */
   },
   visibility: {
     type:String,
@@ -62,7 +62,11 @@ const courseBundleSchema = new Schema({
     default: false,
 /* add In ratingAndReview Collection  */
   },
-
+categoryIds:{
+  type: Array,
+  
+  default: [],
+},
 
   payment: {
     type: String,
@@ -102,13 +106,35 @@ const courseBundleSchema = new Schema({
     default: ""
   },
 
-
+  regularPrice:{
+    type:Number,
+    default:0
+  },
+  salePrice:{
+    type:Number,
+    default:0
+  },
+  taxApplicable:{
+    type:Boolean,
+    default:true
+  },
+  taxPrecentage:{
+    type:Number,
+    default:0
+  },
   
+
+  trash: {
+    type: String,
+    
+    default: "Restored",
+/* Restored , Deleted */
+  },
 
   createdAt: { type: Date, default: new Date() },
   isApproved: {
     type: Boolean,
-    default: true,
+    default: true,  
   },
   
   lastUpdated: { type: Date, default: new Date() },
