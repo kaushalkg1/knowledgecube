@@ -9,6 +9,7 @@ import updateUser from "./updateUser";
 import createCourse from "./createCourse";
 import getAllCourses from "./getAllCourses";
 import getMyCourses from "./getMyCourses";
+import getMyCourseById from "./getMyCourseById";
 
 const router = Router();
 router.use(cors());
@@ -23,7 +24,8 @@ router.use(cors());
 //   .post(protectApi, storePost)
 //   .delete(protectApi, deletePost);
 router.get("/", getAllCourses);
-router.post("/myCourse", getMyCourses);
+router.post("/myCourses", getMyCourses);
+router.post("/myCourse", getMyCourseById);
 
 
 router.post("/login", loginUser);
