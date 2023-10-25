@@ -10,6 +10,7 @@ import createCourse from "./createCourse";
 import getAllCourses from "./getAllCourses";
 import getMyCourses from "./getMyCourses";
 import getMyCourseById from "./getMyCourseById";
+import updateMyCourseById from "./updateMyCourseById";
 
 const router = Router();
 router.use(cors());
@@ -26,6 +27,7 @@ router.use(cors());
 router.get("/", getAllCourses);
 router.post("/myCourses", getMyCourses);
 router.post("/myCourse", getMyCourseById);
+router.post("/updateMyCourse",updateMyCourseById);
 
 
 router.post("/login", loginUser);

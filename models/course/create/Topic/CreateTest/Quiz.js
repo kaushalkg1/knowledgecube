@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 const { ObjectId } = Schema.Types;
 
-const LessonSchema = new Schema({
+const QuizSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -15,16 +15,21 @@ const LessonSchema = new Schema({
     ref: "User",
     required: true,
   },
+  questionIds: {
+    type: Array,
+    default:[{index:0,id:""}]
+  },
+   
   
-  
+ 
+ 
+
  
   deleteItem: {
     type: Boolean,
     
     default: false,
   },
-  
-
   
 
   
@@ -36,5 +41,5 @@ const LessonSchema = new Schema({
 });
 
 
-const Lesson = model("Lesson", LessonSchema);
-export default Lesson;
+const Quiz = model("Quiz", QuizSchema);
+export default Quiz;

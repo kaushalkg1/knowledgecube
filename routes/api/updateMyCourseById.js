@@ -1,20 +1,22 @@
 
 import {  verifyToken } from "../../controllers/user";
 
+import { editMyCourseByIdController } from "../../controllers/editMyCourseById";
+
 import { getMyCoursesController } from "../../controllers/getMyCourses";
-import { getMyCourseByIdController } from "../../controllers/getMyCourseById";
 
 export default async (req, res) => {
   try {
-    
-      const { courseid, id , token } = req.body;
-     // console.log(id)
+   // console.log(req.body)
+      const { field , token , value , id,courseId } = req.body;
+     //console.log(field)
       await verifyToken(token);
       //console.log(token)
      
+    const course = await editMyCourseByIdController({field, value ,courseId:courseId,id:id});
+    //console.log(course)
+    
     const posts = await getMyCoursesController({id:id});
-    const course = await getMyCourseByIdController({courseId:courseid,id:id});
-   // console.log(posts )
     res.json({ posts, course });
   } catch (error) {
     res.status(403).json(error);

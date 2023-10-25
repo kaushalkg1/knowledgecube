@@ -125,8 +125,28 @@ const userSchema = new Schema({
               website:"" ,
               youtube:"" ,
               instagram:"" ,
+              
             },
     /* for messenger */
+  },
+
+  visibility:{
+    type: Object,
+    default: {
+      socialProfile:true,
+      coverPhoto: true,
+      profile:true,
+      Photo:true,
+      bio:true,
+      age:true,
+      gender:true,
+      phoneNumber:true,
+      email:true,
+      userName:true,
+       fullName:true,
+       lastName:true,
+       firstName:true}
+    
   },
   address:{
     type:Object, 
@@ -136,14 +156,14 @@ const userSchema = new Schema({
       state:"",
       country:"",
       zipOrPin:""
-
+      , show:true
     },homeAddress:{
       
       homeCity:"",
       state:"",
       country:"",
       zipOrPin:""
-
+      , show:true
     }
   }
 },education:{
@@ -155,7 +175,8 @@ const userSchema = new Schema({
     tenthPercentage:"",
     twelthPercentage:" ",
     myUGPercentageOrCGPA:" ",
-    myPGPercentageOrCGPA:" "
+    myPGPercentageOrCGPA:" ",
+     show:true
   }
 },
   careerDevelopment:{
@@ -166,12 +187,19 @@ const userSchema = new Schema({
       swot:"",/* SWOT Analysis  */
       journey:"",/* Journey Video */
       technical:"",/* Technical Knowledge Video */
-      videoResume:"" }
+      videoResume:"" ,
+    
+      visibilityresume:true,
+      visibilitycdp:true,
+      visibilityswot:true,
+      visibilityjourney:true,
+      visibilitytechnical:true,
+      visibilityvideoResume:true,}
   },
   skills:{
     type:Array,
-    default:[{ skillName:"",description:"" , show:true
-    } , { skillName:"",description:"", show:true}  ]
+    default:[{ index:0,skillName:"",description:"" , show:true
+    } , {index:1, skillName:"",description:"", show:true}  ]
   }
   ,
   jobCurrentInfo:{
@@ -180,12 +208,12 @@ const userSchema = new Schema({
   totalExperienceYears:0,
   internshipDuration:0,
   highestCTC:""
-
+  , show:true
   }
   },
   jobDetails:{
     type:Array,
-    default:[{
+    default:[{index:0,
         companyName:"",
         description:"",
         location:"",
@@ -202,11 +230,16 @@ const userSchema = new Schema({
   projectLinks:{
     type: Array,
     default:[
-      {projectName:"",link:"",  show:true
+      {index:0,projectName:"",link:"",  show:true
     },
-    {projectName:"",link:"" , show:true
+    {index:1,projectName:"",link:"" , show:true
   }
   ]
+  },
+  deleteItem: {
+    type: Boolean,
+    
+    default: false,
   },
 });
 

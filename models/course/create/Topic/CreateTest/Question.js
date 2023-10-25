@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 const { ObjectId } = Schema.Types;
 
-const LessonSchema = new Schema({
+const QuestionSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -14,9 +14,11 @@ const LessonSchema = new Schema({
     type: ObjectId,
     ref: "User",
     required: true,
+  },  lessonIds: {
+    type: Array,
+    default:[]
   },
-  
-  
+   
  
   deleteItem: {
     type: Boolean,
@@ -24,7 +26,6 @@ const LessonSchema = new Schema({
     default: false,
   },
   
-
   
 
   
@@ -36,5 +37,5 @@ const LessonSchema = new Schema({
 });
 
 
-const Lesson = model("Lesson", LessonSchema);
-export default Lesson;
+const Question = model("Question", QuestionSchema);
+export default Question;

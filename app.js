@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
-import { join } from "path";
+import multer from "multer";
+import path, { join } from "path";
 
 import compression from "compression";
 import home from "./routes/home";
@@ -35,10 +36,23 @@ app.use(
 app.set("view engine", "pug");
 
 app.use(cors());
+ const storage = multer.diskStorage({
+  destination : (req,file,cb)=>{
+    cb(null,"public/uploads")
 
+  },filename:(req,file,cb)=>{
+    cb(null , file.fieldname+"_"+Date.now()+file.originalname)
+  }
+})
+const upload= multer({
+  storage:storage
+})
 app.use("/admin", admin);
 app.use("/api", api);
 app.use("/", home);
+app.post("/upload",upload.single("image"),(req,res)=>{
+  console.log(req.file)
+})
 
 Promise.all([connectToDb()])
   .then(() =>

@@ -46,8 +46,8 @@ const courseBundleSchema = new Schema({
     /* Immediately , AtFutureDate */
   },
    publishAtFutureDate: {
-    type:Date,
-    default:new Date()
+    type:String,
+    default:""
     /* If AtFutureDate , show Future Date */
   },
   courseDuration: {
@@ -62,11 +62,6 @@ const courseBundleSchema = new Schema({
     default: false,
 /* add In ratingAndReview Collection  */
   },
-categoryIds:{
-  type: Array,
-  
-  default: [],
-},
 
   payment: {
     type: String,
@@ -96,14 +91,16 @@ categoryIds:{
 /* If Make This Course Public. No enrolment required. */
   },
   featureImage: {
-    type: String,
-    
-    default: ""
+    type: Array,
+     /* array for image gallary */ 
+    default: [{index:0,src:"",status:true}] 
   },
   featureVideo: {
-    type: String,
-    
-    default: ""
+    type: Array,
+    /* type:"youtube,vimeo,externalLink"
+    thumbnail: if empty it takes feature image[0] , if feature img not present it gets default img. 
+    */
+    default: [{index:0,type:"",src:"",thumbnail:"",status:true}]
   },
 
   regularPrice:{
@@ -122,15 +119,80 @@ categoryIds:{
     type:Number,
     default:0
   },
-  
-
-  trash: {
-    type: String,
-    
-    default: "Restored",
-/* Restored , Deleted */
+  suggestedCourseIds: {
+    type: Array,
+    default:[{index:0,id:"",status:true}]
   },
+  /* update Category Ids in Course and Category Model Simulteneously */
+ 
+  categoryIds: {
+    type: Array,
+    default:[{index:0,id:"",status:true}]
+  },
+/*  You may Be able To Add other course bundles  Directly in This Course Bundle  
 
+no need to enrol in those bundles once you enrol in this course bundle . 
+{  
+   while enrolling in this course bundle , check   CourseBundleIds and enrol in those bundles directly as well 
+
+}
+*/
+  courseBundleIds: {
+    type: Array,
+    default:[{index:0,id:"",status:true}]
+  },
+  /*  You may Be able To Add  Sub Course  Directly in This Course Bundle , 
+  
+   When You Create SubCourse From Course Bundle Page, Create it and then Update -
+   subCourseIds array with newly created SubCourse id -> push it in array .
+   just change index number to rearrange order .
+
+   change objects index key -> 
+   index:{index:arr[otherindex].index,id:arr[index].id,status:arr[index].status}
+   otherindex:{index:arr[index].index,id:arr[otherindex].id,status:arr[otherindex].status}
+      change array index ->
+   let temp =arr[index];
+   
+   arr[index]=arr[otherindex];
+
+   arr[otherindex]= temp;
+   before-
+[{index:0,id:"index",status:true},{index:1,id:"otherindex",status:true},]
+after-
+[{index:0,id:"otherindex",status:true},{index:1,id:"index",status:true},]
+  first swap index - then swap whole object .
+  */
+
+  subCourseIds: {
+    type: Array,
+    default:[{index:0,id:"",status:true}]
+  },
+   /*  You may Be able To Add MileStones   Directly in This Course Bundle   */
+
+ mileStoneIds: {
+    type: Array,
+    default:[{index:0,id:"",status:true}]
+  },
+  /*  You may Be able To Add Modules  Directly in This Course Bundle   */
+
+moduleIds: {
+  type: Array,
+  default:[{index:0,id:"",status:true}]
+},
+/*  You may Be able To Add Topics Directly in This Course Bundle   */
+
+topicIds: {
+  type: Array,
+  default:[{index:0,id:"",status:true}]
+},
+
+ 
+deleteItem: {
+  type: Boolean,
+  
+  default: false,
+},
+  
   createdAt: { type: Date, default: new Date() },
   isApproved: {
     type: Boolean,
